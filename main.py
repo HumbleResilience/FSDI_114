@@ -12,30 +12,40 @@
 #       append char_b to char_list_b
 
 
+NO_OF_CHARS = 256
 
-
-string_a = 'car'
-string_b = 'rac'
+#user input
+string_a = input("Enter string_a: ")
+string_b = input("Enter string_b: ")
 #check length of words
 def is_anagram(string_a, string_b):
+
+    #count arrays initialized to 0
+    count1 = [0] * NO_OF_CHARS
+    count2 = [0] * NO_OF_CHARS
+    
+
+    #for each char in input strings, increment count
+    for char_a in string_a:
+        count1[ord(char_a)] += 1
+    
+    for char_b in string_b:
+        count2[ord(char_b)] +=1
+
+    #checking length of words  
     if len(string_a) != len(string_b):
-        print("not anagrams")
+        return 0
+
+    #compare the arrays
+    for char in range(NO_OF_CHARS):
+        if count1[char] != count2[char]:
+            return 0
+
+    return 1
     
-    
-#convert to uppercase
-string_a = string_a.upper()
-string_b = string_b.upper()
+if is_anagram(string_a, string_b):
+    print("These are anagrams")
 
-char_list_a  = []
-char_list_b = []
-
-for char_a in string_a:
-    char_list_a.append(char_a)
-
-for char_b in string_b:
-    char_list_b.append(char_b)
-
-    if char_a == char_b:
-        print("These words are anagrams.")
-
-is_anagram('car', 'RAC')
+else:
+    print("These are not anagrams")
+        
