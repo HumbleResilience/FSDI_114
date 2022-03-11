@@ -57,7 +57,7 @@ def balance_check(s):
         else:
                 return False
 
-print(balance_check("(((])))"))
+print(balance_check("(((((())))))"))
 
 
 
